@@ -10,7 +10,7 @@
    -->
    <meta charset="utf-8" />
    <meta name="viewport" content="width=page-width, initial-scale=1.0">
-   <title>Snoot Flowers - Submitted Data</title>
+   <title>Post Message</title>
    <link rel="stylesheet" href="snoot.css" />
    <link href='http://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
    <script src="modernizr.custom.65897.js"></script>
@@ -20,7 +20,26 @@
     <?php
         //How got here?
         if (isset($_POST['submit'])) {
-            # code...
+            $subject = stripslashes($_POST['subject']);
+            $name = stripslashes($_POST['name']);
+            $message = stripslashes($_POST['message']);
+            //Gets rid of ~ and replaces with -.
+            $subject = str_replace("~", "-", $subject);
+            $name = str_replace("~", "-", $name);
+            $message = str_replace("~", "-", $message);
+            //Stores message
+            $messageRecord = "$subject~$name~$message\n";
+            $fileHandle = fopen("messages.txt", "ab");
+            if (!$fileHandle) {
+                //File handle is false
+                echo "There was an error saving your message!\n";
+            } else {
+                //File handle is true
+                fwrite($fileHandle, $messageRecord);
+                fclose($fileHandle);
+                echo "Your message has been saved.\n";
+            }
+            
         }
     ?>
     <h1>Post New Message</h1>
