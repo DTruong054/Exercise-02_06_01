@@ -79,7 +79,7 @@
             echo "</tr>\n";
             ++$index;
             next($keyMessageArray);
-            $key = key($keyMessageArray)
+            $key = key($keyMessageArray);
         }
         //Ends table
         echo "</table>";
