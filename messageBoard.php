@@ -38,6 +38,12 @@
                     $messageArray = array_unique($messageArray);
                     $messageArray = array_values($messageArray);
                     break;
+                case 'Sort Ascending':
+                    sort($messageArray);
+                    break;
+                case 'Sort Descending':
+                    rsort($messageArray);
+                    break;
             } if (count($messageArray) > 0) {
                 //If there are still messsages
                 $newMessageArray = implode($messageArray);
@@ -69,7 +75,7 @@
         $key = key($keyMessageArray);
         foreach ($keyMessageArray as $message) { 
             $currMessage = explode("~", $message);
-            //Looping and creatig table rows
+            //Looping and creating table rows
             echo "<tr>";
             echo "<td width=\"5%\" style=\" text-align: center; font-weight: bold\">" . $index . "</td>";
             echo "<td width=\"85%\"><span style=\"font-weight:bold\">Subject: </span>" . htmlentities($key) ."<br>\n";
@@ -84,17 +90,14 @@
         //Ends table
         echo "</table>";
     }
-        
     ?>
     <p>
         <a href="postMessage.php">Post new message</a><br>
+        <a href="messageBoard.php?action=Sort%20Ascending">Sort Subject A-Z</a> <br>
+        <a href="messageBoard.php?action=Sort%20Descending">Sort Subject Z-A</a> <br>
         <a href="messageBoard.php?action=Delete%20First">Delete First Message</a> <br>
         <a href="messageBoard.php?action=Delete%20Last">Delete Last Message</a> <br>
-        <a href="messageBoard.php?action=Remove%20Duplicates">Remove Duplicates</a> <br>
+        <!-- <a href="messageBoard.php?action=Remove%20Duplicates">Remove Duplicates</a> <br> -->
     </p>
 </body>
 </html>
-
-<?php
-    // Mary had a little lamb little lam little lamb, mary had a little lamb that ate her too
-?>
