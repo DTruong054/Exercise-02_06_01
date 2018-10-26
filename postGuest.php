@@ -1,3 +1,6 @@
+<?php
+    //todo FIX THE DELETE THIS VISITOR
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +10,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <form action="postGuest.php" method="post">
-        <!-- Forms -->
-        <input type="text" name="name" placeholder="Name"><br>
-        <input type="text" name="email" placeholder="E-mail"><br>
-        <!-- Form buttons -->
-        <input type="reset" name="reset" value="Reset Form">
-        <input type="submit" name="submit" value="Post Message">
-    </form>
+<style>
+    /* inputt styles */
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type=reset] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        input[type=reset]:hover {
+            background-color: #45a049;
+        }
+    /* div styles */
+        div {
+            border-radius: 5px;
+            background-color: rgb(105,105,105);
+            padding: 20px;
+        }
+    /* button styles */
+        .button{
+            text-decoration: none;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            display: block;
+            padding: 14px 20px;
+            margin: 0 auto;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .button:hover{
+            background-color: #45a049;
+        }
+    </style>    
+    <div>
+        <form action="postGuest.php" method="post">
+            <!-- Forms -->
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="text" name="email" placeholder="E-mail"><br>
+            <!-- Form buttons -->
+            <input type="reset" name="reset" value="Reset Form">
+            <input type="submit" name="submit" value="Post Message">
+            <p>
+                <a href="guestBook.php" class="button">View Guests</a>
+            </p>
+        </form>
+    
+
     <?php
         if (isset($_POST['submit'])) {
+            //When guest hit submit
             $name = stripslashes($_POST['name']);
             $email = stripslashes($_POST['email']);
             $name = str_replace("|", "/", $name);
             $email = str_replace("|" , "/", $email);
             $existingName = array();
-
+            
         if (file_exists('guest.txt') && filesize('guest.txt') > 0) {
             $nameArray = file("guest.txt");
             $count = count($nameArray);
@@ -57,8 +133,6 @@
             $message = "";
         }
     ?>
-    <p>
-        <a href="guestBook.php">View Guests</a>
-    </p>
+    </div>
 </body>
 </html>
