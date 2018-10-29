@@ -80,7 +80,7 @@
         <form action="postGuest.php" method="post">
             <!-- Forms -->
             <input type="text" name="name" placeholder="Name"><br>
-            <input type="text" name="email" placeholder="E-mail"><br>
+            <input type="text" name="email" placeholder="E-mail" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"><br>
             <!-- Form buttons -->
             <input type="reset" name="reset" value="Reset Form">
             <input type="submit" name="submit" value="Post Message">
